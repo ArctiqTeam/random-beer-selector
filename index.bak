@@ -6,8 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Random Beer Selector</title>
     <link rel="stylesheet" href="index.css" />
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script src="fetch.js"></script>
     <script src="lib/require.js"></script>
     <script src="bootstrap.js"></script>
     <script src="index.js"></script>
@@ -17,13 +15,10 @@
       <p>Loading products and inventories for store, please wait…</p>
       <div id="_giphy_tv"></div>
       <script>
-	jQuery(function($) {
-	   fetch('http://api.giphy.com/v1/gifs/random?tag=beer&api_key=4Z7XmRZCziCDF0q6rLwAKO7BjgGuF74u').then(function(response) {
-		return response.json();
-	   }).then(function(my_result) {
-		$('#_giphy_tv').html('<img src="'+my_result.data.image_url+'">');
-   	   });
-        });
+        var _giphy_tv_tag="beer";
+        var g = document.createElement('script'); g.type = 'text/javascript'; g.async = true;
+        g.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'giphy.com/static/js/widgets/tv.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(g, s);
       </script>
     </div>
   </body>
