@@ -15,6 +15,16 @@
   <body>
     <div class="loading">
       <p>Loading products and inventories for store, please wait…</p>
+      <div id="_giphy_tv"></div>
+      <script>
+	jQuery(function($) {
+	   fetch('http://api.giphy.com/v1/gifs/random?tag=beer&api_key=4Z7XmRZCziCDF0q6rLwAKO7BjgGuF74u').then(function(response) {
+		return response.json();
+	   }).then(function(my_result) {
+		$('#_giphy_tv').html('<img src="'+my_result.data.image_url+'">');
+   	   });
+        });
+      </script>
     </div>
   </body>
 </html>
