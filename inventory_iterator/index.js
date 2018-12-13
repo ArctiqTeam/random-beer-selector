@@ -7,7 +7,7 @@ define(["lib/es6-promise", "lib/jquery"], function (Es6Promise, $) {
     var iterations = 0;
 
     var per_page_min = 5;
-    var per_page_max = 100;
+    var per_page_max = 10;
     var per_page = (limit <= per_page_min) ?
       per_page_min :
         (limit < per_page_max) ?
