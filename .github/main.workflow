@@ -16,7 +16,7 @@ action "Tag image" {
 
 action "Auth to OpenShift registry" {
   uses = "actions/docker/cli@86ff551d26008267bb89ac11198ba7f1d807b699"
-  runs = "docker login -u $DOCKER_USER -p $DOCKER_PASSWORD docker-registry.lab.pathfinder.gov.bc.ca"
+  runs = "docker login -u $DOCKER_USER -p $DOCKER_PASS docker-registry.lab.pathfinder.gov.bc.ca"
   needs = ["Tag image"]
   env = {
     DOCKER_REGISTRY_URL = "docker-registry.lab.pathfinder.gov.bc.ca"
