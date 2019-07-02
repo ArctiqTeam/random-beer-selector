@@ -17,5 +17,5 @@ action "Tag image" {
 action "Push image" {
   uses = "actions/docker/cli@86ff551d26008267bb89ac11198ba7f1d807b699"
   runs = "docker push docker-registry-default.lab.pathfinder.gov.bc.ca/shea-argo/beer-selector:latest"
-  needs = ["Auth to OpenShift registry"]
+#  needs = ["Auth to OpenShift registry"]
 }
