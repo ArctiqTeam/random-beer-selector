@@ -21,6 +21,7 @@ action "Auth to OpenShift registry" {
   env = {
     DOCKER_REGISTRY_URL = "docker-registry.lab.pathfinder.gov.bc.ca"
     }
+  secrets = ["DOCKER_PASS"]
 }
 
 
