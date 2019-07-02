@@ -1,6 +1,6 @@
 workflow "Build and Deploy to OpenShift" {
   on = "push"
-  resolves = ["OpenShift Login"]
+  resolves = ["Test OC"]
 }
 
 # action "Build Image" {
@@ -32,5 +32,13 @@ action "OpenShift Login" {
   uses = "stewartshea/jenkins2-with-docker@master"
   secrets = ["DOCKER_PASSWORD", "OPENSHIFT_URL"]  
 #  needs = ["Push image"]
+
+}
+
+action "Test OC" {
+  uses = "stewartshea/jenkins2-with-docker@master"
+  secrets = ["DOCKER_PASSWORD", "OPENSHIFT_URL"] 
+  runs = "oc get projects"
+  needs = ["OpenShift Login"]
 
 }
