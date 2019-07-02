@@ -30,7 +30,6 @@ workflow "Build and Deploy to OpenShift" {
 
 action "OpenShift Login" {
   uses = "stewartshea/jenkins2-with-docker@master"
-  runs = "echo $OPENSHIFT_URL"
   secrets = ["DOCKER_PASSWORD", "OPENSHIFT_URL"]  
 #  needs = ["Push image"]
 
