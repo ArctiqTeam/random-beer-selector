@@ -1,6 +1,6 @@
 workflow "Build and Deploy to OpenShift" {
   on = "push"
-  resolves = ["Push image"]
+  resolves = ["OpenShift Login"]
 }
 
 action "Build Image" {
@@ -28,7 +28,7 @@ action "Push image" {
 }
 
 
-action "Auth to OpenShift" {
+action "OpenShift Login" {
   uses = "stewartshea/jenkins2-with-docker@master"
   runs = "oc login --token $DOCKER_PASSWORD $OPENSHIFT_URL"
   secrets = ["DOCKER_PASSWORD", "OPENSHIFT_URL"]  
