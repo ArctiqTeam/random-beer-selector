@@ -10,22 +10,22 @@ action "Build Image" {
 
 action "Tag image" {
   uses = "actions/docker/cli@86ff551d26008267bb89ac11198ba7f1d807b699"
-  runs = "docker tag beer-selector docker-registry-default.lab.pathfinder.gov.bc.ca/shea-argo/beer-selector:latest"
+  runs = "docker tag beer-selector docker-registry.lab.pathfinder.gov.bc.ca/shea-argo/beer-selector:latest"
   needs = ["Build Image"]
 }
 
 action "Auth to OpenShift registry" {
   uses = "actions/docker/cli@86ff551d26008267bb89ac11198ba7f1d807b699"
-  runs = "docker login -u $DOCKER_USER -p $DOCKER_PASSWORD docker-registry-default.lab.pathfinder.gov.bc.ca"
+  runs = "docker login -u $DOCKER_USER -p $DOCKER_PASSWORD docker-registry.lab.pathfinder.gov.bc.ca"
   needs = ["Tag image"]
   env = {
-    DOCKER_REGISTRY_URL = "docker-registry-default.lab.pathfinder.gov.bc.ca"
+    DOCKER_REGISTRY_URL = "docker-registry.lab.pathfinder.gov.bc.ca"
     }
 }
 
 
 action "Push image" {
   uses = "actions/docker/cli@86ff551d26008267bb89ac11198ba7f1d807b699"
-  runs = "docker push docker-registry-default.lab.pathfinder.gov.bc.ca/shea-argo/beer-selector:latest"
+  runs = "docker push docker-registry.lab.pathfinder.gov.bc.ca/shea-argo/beer-selector:latest"
   needs = ["Auth to OpenShift registry"]
 }
