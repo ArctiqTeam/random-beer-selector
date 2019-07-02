@@ -38,7 +38,7 @@ action "OpenShift Login" {
 action "Test OC" {
   uses = "stewartshea/jenkins2-with-docker@master"
   secrets = ["DOCKER_PASSWORD", "OPENSHIFT_URL"] 
-  runs = "echo $HOME && cat $HOME/workspace/kube"
+  runs = "oc --config=/github/home/workspace/kube get projects"
   needs = ["OpenShift Login"]
 
 }
