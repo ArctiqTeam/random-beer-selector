@@ -27,8 +27,11 @@ action "Push image" {
   needs = ["Auth to OpenShift registry"]
 }
 
+
 action "Auth to OpenShift" {
   uses = "stewartshea/jenkins2-with-docker"
-  runs = "oc login --token $DOCKER_PASSWORD $OPENSHIFT_URL "
-  secrets ["DOCKER_PASSWORD", "OPENSHIFT_URL"]
+  runs = "oc login --token $DOCKER_PASSWORD $OPENSHIFT_URL"
+  secrets = ["DOCKER_PASSWORD", "OPENSHIFT_URL"]  
+  needs = ["Push Image"]
+
 }
