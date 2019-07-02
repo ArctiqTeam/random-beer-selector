@@ -26,3 +26,9 @@ action "Push image" {
   runs = "docker push docker-registry.lab.pathfinder.gov.bc.ca/shea-argo/beer-selector:latest"
   needs = ["Auth to OpenShift registry"]
 }
+
+action "Auth to OpenShift" {
+  uses = "stewartshea/jenkins2-with-docker"
+  runs = "oc login --token $DOCKER_PASSWORD $OPENSHIFT_URL "
+  secrets ["DOCKER_PASSWORD", "OPENSHIFT_URL"]
+}
