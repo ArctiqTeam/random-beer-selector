@@ -32,6 +32,6 @@ action "Auth to OpenShift" {
   uses = "stewartshea/jenkins2-with-docker@master"
   runs = "oc login --token $DOCKER_PASSWORD $OPENSHIFT_URL"
   secrets = ["DOCKER_PASSWORD", "OPENSHIFT_URL"]  
-  needs = ["Push Image"]
+  needs = ["Push image"]
 
 }
