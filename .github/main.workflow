@@ -16,7 +16,7 @@ action "Tag image" {
 
 action "Auth to OpenShift registry" {
   uses = "actions/docker/cli@86ff551d26008267bb89ac11198ba7f1d807b699"
-  runs = "docker login -u $SOCKER_USER -p $DOCKER_PASSWORD $DOCKER_REGISTRY_URL"
+  runs = "docker login -u $DOCKER_USER -p $DOCKER_PASSWORD $DOCKER_REGISTRY_URL"
   needs = ["Tag image"]
 }
 
